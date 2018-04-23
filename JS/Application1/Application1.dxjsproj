@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>d5568704-a709-4be4-9c3b-c1fc23f8025f</ProjectGuid>
+    <AutoAssignPort>True</AutoAssignPort>
+    <RunInSimulator>False</RunInSimulator>
+    <ApplicationPage>index.html</ApplicationPage>
+    <RootNamespace>Application1</RootNamespace>
+    <Name>Application1</Name>
+    <DebugSitePortNumber>50000</DebugSitePortNumber>
+    <UseWebDev>False</UseWebDev>
+    <DefaultDevice>iPhone</DefaultDevice>
+    <DeviceOrientation>Portrait</DeviceOrientation>
+    <DisplayUnhandledExceptions>True</DisplayUnhandledExceptions>
+    <UpgradeNotifyShown>15.1.7</UpgradeNotifyShown>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="index.js" />
+    <Content Include="index.html" />
+    <Content Include="index.css" />
+    <Content Include="css\dx.spa.css" />
+    <Content Include="css\dx.common.css" />
+    <Content Include="css\dx.light.css" />
+    <Content Include="data\db.js" />
+    <Content Include="layouts\Desktop\DesktopLayout.js" />
+    <Content Include="layouts\Desktop\DesktopLayout.css" />
+    <Content Include="layouts\Desktop\DesktopLayout.html" />
+    <Content Include="js\dx.all.js" />
+    <Content Include="js\globalize.min.js" />
+    <Content Include="js\jquery-1.11.2.min.js" />
+    <Content Include="js\jquery-2.1.3.min.js" />
+    <Content Include="js\knockout-3.2.0.js" />
+    <Content Include="views\home.dxview" />
+    <Content Include="views\home.css" />
+    <Content Include="views\home.js" />
+    <Content Include="views\blank.html" />
+    <Content Include="app.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="data\" />
+    <Folder Include="js\" />
+    <Folder Include="layouts\" />
+    <Folder Include="layouts\Desktop\" />
+    <Folder Include="views\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Target Name="Build">
+    <!--
+    <Message Text="'$(MSBuildToolsPath)'"></Message>
+    -->
+    <Message Text="Build JSProject '$(MSBuildProjectFile)':" Importance="high">
+    </Message>
+    <Message Text="Copying refenecses to output dir..." Importance="high" />
+    <MSBuild Targets="Build" Projects="@(ProjectReference)" Properties="OutputPath=$([System.IO.Path]::GetFullPath('$(OutputPath)'))">
+    </MSBuild>
+    <Message Text="Copying files to output dir..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutputPath)%(RelativeDir)%(Filename)%(Extension)')" />
+    <Message Text="Finished Build JSProject '$(MSBuildProjectFile)'." Importance="high">
+    </Message>
+  </Target>
+  <Target Name="CreateManifestResourceNames" Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''" />
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target>
+  <Target Name="Clean">
+    <!--
+    <Message Text="Cleaning Output files..." Importance="high" />
+    <Delete Files="@([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+    -->
+    <Message Text="Cleaning Output dir ($([System.IO.Path]::GetFullPath('$(OutputPath)')))..." Importance="high" />
+    <RemoveDir Directories="$([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+  </Target>
+</Project>
