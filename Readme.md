@@ -8,7 +8,7 @@ You can find an actual example in our technical demos:
 [ASP.NET](https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/WebAPIService/NetCore/Light/)
 [jQuery](https://js.devexpress.com/Demos/WidgetsGallery/Demo/DataGrid/WebAPIService/jQuery/Light/)
 
-The following GitHub example demonstrates how to implement CRUD operation in ASP.NET Core Razor Pages: [How to implement CRUD operations via API controllers in an ASP.NET Core with Razor Pages project](https://github.com/DevExpress-Examples/How-to-implement-CRUD-operations-via-API-controllers-in-an-ASP.NET-Core-with-Razor-Pages-project) 
+The following GitHub example demonstrates how to implement this scenario in ASP.NET Core Razor Pages: [How to implement CRUD operations via API controllers in an ASP.NET Core with Razor Pages project](https://github.com/DevExpress-Examples/How-to-implement-CRUD-operations-via-API-controllers-in-an-ASP.NET-Core-with-Razor-Pages-project) 
 
 **See also:**
 [Data Binding - Razor Page Handlers](https://docs.devexpress.com/AspNetCore/401221/devextreme-based-controls/concepts/bind-controls-to-data/razor-page-handlers)
